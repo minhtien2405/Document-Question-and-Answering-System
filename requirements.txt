@@ -1,6 +1,11 @@
-streamlit
-Pypdf2
 langchain
+sentence_transformers
+streamlit
+qdrant-client
+Pypdf2
 python-dotenv
-faiss-gpu
 openai
+torch
+huggingface
+transformers
+InstructorEmbedding

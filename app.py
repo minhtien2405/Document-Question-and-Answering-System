@@ -1,14 +1,15 @@
 import streamlit as st
 from dotenv import load_dotenv
 from PyPDF2 import PdfReader
+from langchain.document_loaders import PyPDFLoader
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.embeddings import HuggingFaceEmbeddings, OpenAIEmbeddings, HuggingFaceInstructEmbeddings
 # from qdrant_client import QdrantClient
-# from langchain.vectorstores import Qdrant
-from langchain.vectorstores import FAISS
+from langchain.vectorstores import Qdrant
+# from langchain.vectorstores import FAISS
 import os
 from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrieverChain
+from langchain.chains import ConversationalRetrievalChain
 def get_pdf_text(pdf_docs):
     text = ''
     for pdf in pdf_docs:
@@ -34,12 +35,15 @@ def get_vector_store(text_chunks):
     '''
     # embeddings = OpenAIEmbeddings(openai_api_key = os.getenv('OPENAI_API_KEY'))
     embeddings = HuggingFaceInstructEmbeddings(model_name = 'hkunlp/instructor-xl')
-    vector_store = FAISS.from_texts(texts = text_chunks, embedding = embeddings)    
+    # vector_store = FAISS.from_texts(texts = text_chunks, embedding = embeddings)    
+    url = 'http://localhost:6333'
+    vector_store = Qdrant.from_texts(texts = text_chunks, embedding = embeddings, url = url)
     return vector_store
 
 def get_conversation_chain(vector_store):
     memory = ConversationBufferMemory(memory_key = 'chat_history', return_message = True)
-    conversation_chain = ConversationalRetrieverChain(vector_store = vector_store, memory = memory)
+    conversation_chain = ConversationalRetrievalChain(vector_store = vector_store, memory = memory)
+
 def main():
     load_dotenv() 
     st.set_page_config(page_title='Chat with multiple Documents', 
