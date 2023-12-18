@@ -17,8 +17,8 @@ This project aims to create a Squad application utilizing Langchain, Streamlit, 
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/squad-langchain-streamlit-qdrant.git
-   cd squad-langchain-streamlit-qdrant
+   git clone https://github.com/minhtien2405/Document-Question-and-Answering-System.git
+   cd Document-Question-and-Answering-System
 
 2. **Install dependencies:**
 
