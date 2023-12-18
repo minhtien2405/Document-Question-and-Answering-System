@@ -38,10 +38,10 @@ Visit http://localhost:8501 in your web browser to interact with the Squad appli
 
 ## Customization
 HTML/CSS Styling:
-Customize the appearance of the application by modifying the HTML template in htmlTemplate.py according to your design preferences.
+Customize the appearance of the application by modifying the HTML template in *htmlTemplate.py* according to your design preferences.
 
 Integration with Langchain and Qdrant:
-Adjust the code in app.py to integrate with Langchain and Qdrant based on your specific squad-related dataset and requirements.
+Adjust the code in *app.py* to integrate with Langchain and Qdrant based on your specific squad-related dataset and requirements.
 
 
    
